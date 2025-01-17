@@ -7,10 +7,12 @@ public class GM : MonoBehaviour
     private Player player;
     public int cherryCount;
     public GameObject[] PartyMembers;
+    private GMUIController UIController;
 
     void Awake()
     {
         DontDestroyOnLoad(this);
+        UIController = this.GetComponent<GMUIController>();
     }
     // Start is called before the first frame update
     void Start()
@@ -23,9 +25,9 @@ public class GM : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void AddCherry()
     {
-        
+        cherryCount++;
+        UIController.UpdateCherryText(cherryCount);
     }
 }
