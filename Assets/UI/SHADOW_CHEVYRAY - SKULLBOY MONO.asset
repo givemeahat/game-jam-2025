@@ -138,8 +138,8 @@ Material:
     - _TextureHeight: 1024
     - _TextureWidth: 1024
     - _UnderlayDilate: 0
-    - _UnderlayOffsetX: 0
-    - _UnderlayOffsetY: 0
+    - _UnderlayOffsetX: 0.644
+    - _UnderlayOffsetY: -0.629
     - _UnderlaySoftness: 0
     - _VertexOffsetX: 0
     - _VertexOffsetY: 0
@@ -167,11 +167,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
-  m_Name: CHEVYRAY - SKULLBOY MONO SDF
+  m_Name: SHADOW_CHEVYRAY - SKULLBOY MONO
   m_EditorClassIdentifier: 
-  hashCode: -1279943411
+  hashCode: 1831121605
   material: {fileID: -2228763510627785854}
-  materialHashCode: -25698675
+  materialHashCode: 548235461
   m_Version: 1.1.0
   m_SourceFontFileGUID: 7b79e9ca6cd221f47868cec9fff78cc6
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: 7b79e9ca6cd221f47868cec9fff78cc6, type: 3}

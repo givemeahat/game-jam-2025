@@ -25,6 +25,14 @@ public class GM : MonoBehaviour
         }
     }
 
+    public void Update()
+    {
+        if (Input.GetKeyDown("E") || Input.GetKeyDown("Esc"))
+        {
+            UIController.OpenMenu();
+        }
+    }
+
     public void AddCherry()
     {
         cherryCount++;
