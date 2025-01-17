@@ -123,10 +123,10 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
         canInteract = false;
         currentInteractive = null;
-        pCanvasController.HideTalkText();
+        if (pCanvasController.talkText.IsActive()) pCanvasController.HideTalkText();
     }
 }

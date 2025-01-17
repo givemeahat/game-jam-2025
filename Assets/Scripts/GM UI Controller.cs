@@ -33,12 +33,19 @@ public class GMUIController : MonoBehaviour
 
     private void ProgressConversation()
     {
+        GameObject _player = GameObject.FindGameObjectWithTag("Player");
+
+        if (GetComponent<GM>().finishedDogQuest && dialogueCount == 2)
+        {
+            GetComponent<GM>().AddDog();
+            dialogueBoxName.text = " ";
+            Destroy(_player.GetComponent<Player>().currentInteractive.transform.parent.gameObject);
+        }
         if (dialogueCount == currentConversation.Length-1)
         {
             dialogueBox.SetActive(false);
             isConversing = false;
             dialogueCount = 0;
-            GameObject _player = GameObject.FindGameObjectWithTag("Player");
             _player.GetComponent<Player>().enabled = true;
         }
         else if (dialogueCount < currentConversation.Length)

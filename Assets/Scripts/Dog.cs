@@ -26,7 +26,6 @@ public class Dog : MonoBehaviour
         if (gm.finishedDogQuest)
         {
             gm.UIController.RunConversation(questFinishedDialogue, "Doggy");
-            gm.AddDog();
         }
     }
 
