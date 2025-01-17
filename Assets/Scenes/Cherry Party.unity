@@ -556,8 +556,9 @@ MonoBehaviour:
   speed: 10
   moveDirection: 0
   jumpForce: 2750
+  jumpCount: 0
   jumpCountMax: 1
-  checkRadius: 0.2
+  checkRadius: 0.1
   groundCheck: {fileID: 196216427}
   groundObjects:
     serializedVersion: 2

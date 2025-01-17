@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
 
     //---jumping---
     public float jumpForce = 500f;
-    private int jumpCount;
+    public int jumpCount;
     public int jumpCountMax;
     private bool isJumping = false;
     private bool isGrounded = true;
@@ -60,7 +60,10 @@ public class Player : MonoBehaviour
     private void ProcessInputs()
     {
         moveDirection = Input.GetAxis("Horizontal");
-        if (Input.GetButtonDown("Jump") && jumpCount > 0) isJumping = true;
+        if (Input.GetButtonDown("Jump") && jumpCount > 0)
+        {
+            isJumping = true;
+        }
     }
 
     //physics handling
@@ -69,8 +72,8 @@ public class Player : MonoBehaviour
         rb.velocity = new Vector2(moveDirection * speed, rb.velocity.y);
         if (isJumping)
         {
-            rb.AddForce(new Vector2(0f, jumpForce));
             jumpCount--;
+            rb.AddForce(new Vector2(0f, jumpForce));
         }
         isJumping = false;
     }
