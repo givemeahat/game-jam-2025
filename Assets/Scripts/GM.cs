@@ -7,7 +7,12 @@ public class GM : MonoBehaviour
     private Player player;
     public int cherryCount;
     public GameObject[] PartyMembers;
-    private GMUIController UIController;
+    public GMUIController UIController;
+
+    //--- game progression variables ---
+    public bool hasTalkedToDog;
+    public bool hasDogKey;
+    public bool hasObtainedDog;
 
     void Awake()
     {
@@ -27,7 +32,7 @@ public class GM : MonoBehaviour
 
     public void Update()
     {
-        if (Input.GetKeyDown("E") || Input.GetKeyDown("Esc"))
+        if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Escape))
         {
             UIController.OpenMenu();
         }

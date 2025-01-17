@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - Cherry
+  - Dog
+  - Bear
+  - Dragon
+  - Cat
+  - Interactive
   layers:
   - Default
   - TransparentFX

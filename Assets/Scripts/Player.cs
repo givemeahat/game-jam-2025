@@ -26,6 +26,10 @@ public class Player : MonoBehaviour
     //---player UI---
     public PlayerCanvasController pCanvasController;
 
+    //---interactive stuff---
+    public bool canInteract;
+    public InteractiveObject currentInteractive;
+
     private void Awake()
     {
         rb = this.GetComponent<Rigidbody2D>();
@@ -59,8 +63,12 @@ public class Player : MonoBehaviour
     //processes player inputs
     private void ProcessInputs()
     {
+        if (Input.GetKeyDown(KeyCode.Return) && canInteract)
+        {
+            currentInteractive.FeedThroughMethod();
+        }
         moveDirection = Input.GetAxis("Horizontal");
-        if (Input.GetButtonDown("Jump") && jumpCount > 0)
+        if (Input.GetKeyDown(KeyCode.Space) && jumpCount > 0)
         {
             isJumping = true;
         }
@@ -106,5 +114,15 @@ public class Player : MonoBehaviour
             Destroy(collision.gameObject);
             pCanvasController.CherryGet();
         }
+        if (collision.gameObject.tag == "Interactive")
+        {
+            canInteract = true;
+            currentInteractive = collision.gameObject.GetComponent<InteractiveObject>();
+        }
+    }
+
+    private void OnTriggerExit(Collider collision)
+    {
+        canInteract = false;
     }
 }
