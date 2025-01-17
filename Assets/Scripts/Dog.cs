@@ -8,6 +8,8 @@ public class Dog : MonoBehaviour
 
     public string[] meetDialogue;
     public string[] questFinishedDialogue;
+    public string[] finalDogDialogue;
+
 
     public bool hasFinishedQuest;
 
@@ -21,6 +23,7 @@ public class Dog : MonoBehaviour
         if (!gm.hasTalkedToDog)
         {
             gm.UIController.RunConversation(meetDialogue, "Doggy");
+            gm.currentQuest = GM.Questline.DOG;
             gm.hasTalkedToDog = true;
         }
         if (gm.finishedDogQuest)

@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class GM : MonoBehaviour
 {
+    public enum Questline { DOG, BEAR, DRAGON };
+    public Questline currentQuest;
+
+    public enum CurrentFollower { DOG, BEAR, DRAGON };
+    public CurrentFollower currentFollower;
+
     private Player player;
     public int cherryCount;
     public GameObject[] PartyMembers;

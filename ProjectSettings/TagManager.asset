@@ -10,6 +10,7 @@ TagManager:
   - Dragon
   - Cat
   - Interactive
+  - DigSpot
   layers:
   - Default
   - TransparentFX

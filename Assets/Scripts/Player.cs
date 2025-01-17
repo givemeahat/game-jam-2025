@@ -30,6 +30,9 @@ public class Player : MonoBehaviour
     public bool canInteract;
     public InteractiveObject currentInteractive;
 
+    //---digging---
+    public bool canDig;
+
     private void Awake()
     {
         rb = this.GetComponent<Rigidbody2D>();
@@ -67,6 +70,12 @@ public class Player : MonoBehaviour
         {
             currentInteractive.FeedThroughMethod();
             pCanvasController.HideTalkText();
+        }
+        if (Input.GetKeyDown(KeyCode.Return) && gm.hasObtainedDog)
+        {
+            //Debug.Log("Doggy dug something up!");
+            currentInteractive.FeedThroughMethod();
+            pCanvasController.HideDigText();
         }
         moveDirection = Input.GetAxis("Horizontal");
         if (Input.GetKeyDown(KeyCode.Space) && jumpCount > 0)
@@ -115,11 +124,17 @@ public class Player : MonoBehaviour
             Destroy(collision.gameObject);
             pCanvasController.CherryGet();
         }
-        if (collision.gameObject.tag == "Interactive")
+        else if (collision.gameObject.tag == "Interactive")
         {
             canInteract = true;
             currentInteractive = collision.gameObject.GetComponent<InteractiveObject>();
             pCanvasController.ShowTalkText();
+        }
+        else if (collision.gameObject.tag == "DigSpot" && gm.hasObtainedDog)
+        {
+            canDig = true;
+            currentInteractive = collision.gameObject.GetComponent<InteractiveObject>();
+            pCanvasController.ShowDigText();
         }
     }
 
@@ -128,5 +143,6 @@ public class Player : MonoBehaviour
         canInteract = false;
         currentInteractive = null;
         if (pCanvasController.talkText.IsActive()) pCanvasController.HideTalkText();
+        if (pCanvasController.digText.IsActive()) pCanvasController.HideDigText();
     }
 }

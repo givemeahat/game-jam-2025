@@ -8,10 +8,19 @@ public class PlayerCanvasController : MonoBehaviour
 {
     public TextMeshProUGUI cherryGetText;
     public TextMeshProUGUI talkText;
+    public TextMeshProUGUI digText;
 
     public void CherryGet()
     {
         cherryGetText.gameObject.SetActive(true);
+    }
+    public void ShowDigText()
+    {
+        digText.gameObject.SetActive(true);
+    }
+    public void HideDigText()
+    {
+        digText.GetComponent<Animator>().Play("Talk_Disappear");
     }
     public void ShowTalkText()
     {

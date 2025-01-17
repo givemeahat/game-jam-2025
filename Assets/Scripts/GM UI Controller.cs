@@ -6,6 +6,7 @@ using TMPro;
 
 public class GMUIController : MonoBehaviour
 {
+    public GM gm;
     public bool isConversing = false;
     public string[] currentConversation;
 
@@ -17,6 +18,11 @@ public class GMUIController : MonoBehaviour
     public TextMeshProUGUI dialogueBoxName;
     public TextMeshProUGUI dialogueLines;
     public int dialogueCount;
+
+    private void Awake()
+    {
+        gm = GetComponent<GM>();
+    }
 
     public void UpdateCherryText(int _cherryCount)
     {
@@ -35,9 +41,9 @@ public class GMUIController : MonoBehaviour
     {
         GameObject _player = GameObject.FindGameObjectWithTag("Player");
 
-        if (GetComponent<GM>().finishedDogQuest && dialogueCount == 2)
+        if (gm.currentQuest == GM.Questline.DOG && gm.hasTalkedToDog && !gm.hasObtainedDog && dialogueCount == 4)
         {
-            GetComponent<GM>().AddDog();
+            gm.AddDog();
             dialogueBoxName.text = " ";
             Destroy(_player.GetComponent<Player>().currentInteractive.transform.parent.gameObject);
         }

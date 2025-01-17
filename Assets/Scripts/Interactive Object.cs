@@ -8,6 +8,10 @@ public class InteractiveObject : MonoBehaviour
     
     public void FeedThroughMethod()
     {
+        if (parent.tag == "DigSpot")
+        {
+            parent.GetComponent<DigSpot>().Dig();
+        }
         if (parent.tag == "Dog")
         {
             parent.GetComponent<Dog>().DogConversationManager();
