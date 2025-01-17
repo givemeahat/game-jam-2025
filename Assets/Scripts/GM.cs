@@ -11,8 +11,12 @@ public class GM : MonoBehaviour
 
     //--- game progression variables ---
     public bool hasTalkedToDog;
-    public bool hasDogKey;
+    public bool finishedDogQuest;
     public bool hasObtainedDog;
+
+    public List<GameObject> companions;
+
+    public GameObject[] companionPrefabs;
 
     void Awake()
     {
@@ -36,6 +40,11 @@ public class GM : MonoBehaviour
         {
             UIController.OpenMenu();
         }
+    }
+
+    public void AddDog()
+    {
+        hasObtainedDog = true;
     }
 
     public void AddCherry()

@@ -38,7 +38,8 @@ public class GMUIController : MonoBehaviour
             dialogueBox.SetActive(false);
             isConversing = false;
             dialogueCount = 0;
-            GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().enabled = true;
+            GameObject _player = GameObject.FindGameObjectWithTag("Player");
+            _player.GetComponent<Player>().enabled = true;
         }
         else if (dialogueCount < currentConversation.Length)
         {

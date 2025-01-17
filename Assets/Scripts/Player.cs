@@ -66,6 +66,7 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Return) && canInteract)
         {
             currentInteractive.FeedThroughMethod();
+            pCanvasController.HideTalkText();
         }
         moveDirection = Input.GetAxis("Horizontal");
         if (Input.GetKeyDown(KeyCode.Space) && jumpCount > 0)
@@ -118,11 +119,14 @@ public class Player : MonoBehaviour
         {
             canInteract = true;
             currentInteractive = collision.gameObject.GetComponent<InteractiveObject>();
+            pCanvasController.ShowTalkText();
         }
     }
 
     private void OnTriggerExit(Collider collision)
     {
         canInteract = false;
+        currentInteractive = null;
+        pCanvasController.HideTalkText();
     }
 }

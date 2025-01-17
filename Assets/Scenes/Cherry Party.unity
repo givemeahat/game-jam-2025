@@ -344,6 +344,11 @@ MonoBehaviour:
   - Hi, I'm doggy!
   - Bark Bark!
   - Woof!
+  questFinishedDialogue:
+  - Oh wow, you did it! I thought I'd lost that key for forever, woof!
+  - Well, let's go get those cherries from the pantry!
+  - Mind if we hang out a bit, too? I like you, bark bark!
+  hasFinishedQuest: 0
 --- !u!1 &670598467
 GameObject:
   m_ObjectHideFlags: 0
@@ -1431,11 +1436,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9096523903861744343, guid: 156bb24acd7ae2d4086693afe8003f44, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.29990852
+      value: -3.99
       objectReference: {fileID: 0}
     - target: {fileID: 9096523903861744343, guid: 156bb24acd7ae2d4086693afe8003f44, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.010681269
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 9096523903861744343, guid: 156bb24acd7ae2d4086693afe8003f44, type: 3}
       propertyPath: m_LocalPosition.z
