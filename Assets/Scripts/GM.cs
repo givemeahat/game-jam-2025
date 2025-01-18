@@ -115,8 +115,9 @@ public class GM : MonoBehaviour
     IEnumerator LoadInScene(int _index)
     {
         GameObject _loadingScreen = UIController.loadingScreen;
-        SceneManager.LoadScene(_index);
+        _loadingScreen.SetActive(true);
         yield return new WaitForSeconds(.5f);
+        SceneManager.LoadScene(_index);
         _loadingScreen.GetComponent<Animator>().Play("LoadingScreen_FadeOut");
     }
     IEnumerator SimpleFade()

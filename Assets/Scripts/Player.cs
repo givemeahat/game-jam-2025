@@ -172,9 +172,14 @@ public class Player : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision)
     {
         GameObject _coll = collision.gameObject;
-        GameObject _mainObject = _coll.transform.parent.gameObject;
+        GameObject _mainObject;
+        if(_coll.transform.parent != null) _mainObject = _coll.transform.parent.gameObject;
+        if (_coll.tag == "LoadZone")
+        {
+            gm.LoadScene(_coll.GetComponent<LoadZone>().buildIndexToLoad);
+        }
         //cherry collecting!
-        if (_coll.tag == "Cherry")
+        else if (_coll.tag == "Cherry")
         {
             gm.AddCherry();
             Destroy(collision.gameObject);

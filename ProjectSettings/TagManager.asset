@@ -15,6 +15,7 @@ TagManager:
   - Key
   - Bandana
   - Boots
+  - LoadZone
   layers:
   - Default
   - TransparentFX
