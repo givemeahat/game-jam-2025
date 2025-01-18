@@ -18,15 +18,15 @@ public class Dragon : MonoBehaviour
         gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GM>();
     }
 
-    public void DogConversationManager()
+    public void ConversationManager()
     {
-        if (!gm.hasTalkedToDog)
+        if (!gm.hasTalkedToDragon)
         {
             gm.UIController.RunConversation(meetDialogue, "Boots");
-            gm.currentQuest = GM.Questline.DOG;
+            gm.currentQuest = GM.Questline.DRAGON;
             gm.hasTalkedToDog = true;
         }
-        if (gm.finishedDogQuest)
+        if (gm.finishedDragonQuest)
         {
             gm.UIController.RunConversation(questFinishedDialogue, "Boots");
         }

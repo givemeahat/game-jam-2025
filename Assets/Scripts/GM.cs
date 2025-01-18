@@ -19,6 +19,12 @@ public class GM : MonoBehaviour
     public bool hasTalkedToDog;
     public bool finishedDogQuest;
     public bool hasObtainedDog;
+    public bool hasTalkedToBear;
+    public bool finishedBearQuest;
+    public bool hasObtainedBear;
+    public bool hasTalkedToDragon;
+    public bool finishedDragonQuest;
+    public bool hasObtainedDragon;
 
     public List<GameObject> companions;
 

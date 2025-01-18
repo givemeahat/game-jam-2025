@@ -11,7 +11,6 @@ public class Player : MonoBehaviour
     private Rigidbody2D rb;
     public float speed = 3f;
     public float moveDirection;
-    bool facingRight = true;
 
     //---jumping---
     public float jumpForce = 500f;
@@ -54,6 +53,7 @@ public class Player : MonoBehaviour
     {
         //inputs
         ProcessInputs();
+        if (gm.hasObtainedDragon && jumpCountMax == 1) jumpCountMax = 2;
     }
 
     //called multiple times a frame for smoother movement
@@ -83,10 +83,19 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Return) && canInteract)
         {
             currentInteractive.FeedThroughMethod();
+            rb.velocity = new Vector2(0, 0);
             anim.SetTrigger("Interact");
             pCanvasController.HideTalkText();
         }
         if (Input.GetKeyDown(KeyCode.Return) && gm.hasObtainedDog)
+        {
+            //Debug.Log("Doggy dug something up!");
+            currentInteractive.FeedThroughMethod();
+            //add later
+            //anim.SetTrigger("Dig");
+            pCanvasController.HideDigText();
+        }
+        if (Input.GetKeyDown(KeyCode.Return) && gm.hasObtainedBear)
         {
             //Debug.Log("Doggy dug something up!");
             currentInteractive.FeedThroughMethod();
@@ -131,34 +140,43 @@ public class Player : MonoBehaviour
     //ground checking
     void OnTriggerEnter2D(Collider2D collision)
     {
+        GameObject _coll = collision.gameObject;
+        GameObject _mainObject = _coll.transform.parent.gameObject;
         //cherry collecting!
-        if (collision.gameObject.tag == "Cherry")
+        if (_coll.tag == "Cherry")
         {
             gm.AddCherry();
             Destroy(collision.gameObject);
             pCanvasController.CherryGet();
             anim.SetTrigger("Yippee");
         }
-        else if (collision.gameObject.tag == "Interactive")
+        else if (_coll.tag == "Interactive")
         {
             canInteract = true;
-            currentInteractive = collision.gameObject.GetComponent<InteractiveObject>();
+            currentInteractive = _coll.GetComponent<InteractiveObject>();
             pCanvasController.ShowTalkText();
         }
-        else if (collision.gameObject.tag == "DigSpot" && gm.hasObtainedDog)
+        else if (_coll.tag == "DigSpot" && gm.hasObtainedDog)
         {
             canDig = true;
             currentInteractive = collision.gameObject.GetComponent<InteractiveObject>();
             pCanvasController.ShowDigText();
         }
+        else if (_coll.tag == "BreakableWall" && gm.hasObtainedBear)
+        {
+            canCrush = true;
+            currentInteractive = collision.gameObject.GetComponent<InteractiveObject>();
+            pCanvasController.ShowBreakText();
+        }
     }
-
+    
     private void OnTriggerExit2D(Collider2D collision)
     {
         canInteract = false;
         currentInteractive = null;
         if (pCanvasController.talkText.IsActive()) pCanvasController.HideTalkText();
         if (pCanvasController.digText.IsActive()) pCanvasController.HideDigText();
+        if (pCanvasController.breakText.IsActive()) pCanvasController.HideBreakText();
     }
 
     /*private IEnumerator Land()

@@ -9,6 +9,7 @@ public class PlayerCanvasController : MonoBehaviour
     public TextMeshProUGUI cherryGetText;
     public TextMeshProUGUI talkText;
     public TextMeshProUGUI digText;
+    public TextMeshProUGUI breakText;
 
     public void CherryGet()
     {
@@ -21,6 +22,14 @@ public class PlayerCanvasController : MonoBehaviour
     public void HideDigText()
     {
         digText.GetComponent<Animator>().Play("Talk_Disappear");
+    }
+    public void ShowBreakText()
+    {
+        breakText.gameObject.SetActive(true);
+    }
+    public void HideBreakText()
+    {
+        breakText.GetComponent<Animator>().Play("Talk_Disappear");
     }
     public void ShowTalkText()
     {

@@ -18,15 +18,15 @@ public class Bear : MonoBehaviour
         gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GM>();
     }
 
-    public void DogConversationManager()
+    public void ConversationManager()
     {
-        if (!gm.hasTalkedToDog)
+        if (!gm.hasTalkedToBear)
         {
             gm.UIController.RunConversation(meetDialogue, "Bear");
             gm.currentQuest = GM.Questline.BEAR;
             gm.hasTalkedToDog = true;
         }
-        if (gm.finishedDogQuest)
+        if (gm.finishedBearQuest)
         {
             gm.UIController.RunConversation(questFinishedDialogue, "Bear");
         }

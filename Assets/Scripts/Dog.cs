@@ -18,7 +18,7 @@ public class Dog : MonoBehaviour
         gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GM>();
     }
 
-    public void DogConversationManager()
+    public void ConversationManager()
     {
         if (!gm.hasTalkedToDog)
         {
