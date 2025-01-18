@@ -21,6 +21,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Room4_BongoHouse.unity
     guid: 756d235fc84e7db42b528eafb9e3f466
   - enabled: 1
-    path: Assets/Scenes/Doggy_Cutscene.unity
+    path: Assets/Scenes/Cutscenes/Doggy_Cutscene_P1.unity
+    guid: ec5b0fadae4cf18449f87cd75df909a9
+  - enabled: 1
+    path: Assets/Scenes/Cutscenes/Doggy_Cutscene_P2.unity
     guid: caaf06caec9cf014eb61d720d6f8dde5
   m_configObjects: {}

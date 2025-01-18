@@ -112,7 +112,7 @@ public class GM : MonoBehaviour
         UIController.cherryCountObj.SetActive(false);
         //add cherry addition animation here
         //load cutscene where dog says last lines; transition to real scene after
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(6);
         _loadingScreen.GetComponent<Animator>().Play("LoadingScreen_FadeOut");
     }
     IEnumerator LoadInSceneAndPosition(int _index, Vector3 _position, bool _flipX)

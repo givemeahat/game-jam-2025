@@ -72,8 +72,7 @@ public class GMUIController : MonoBehaviour
             currentConversation.Clear();
             if (progressToBongoCutscene)
             {
-                //gm load bongo cutscene part 1
-                //gm.LoadScene(whatever);
+                gm.LoadScene(5);
             }
         }
         else if (dialogueCount < currentConversation.Count)
@@ -102,6 +101,7 @@ public class GMUIController : MonoBehaviour
         GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().enabled = false;
         dialogueLines.GetComponent<TextMeshProEffect>().Play();
         dialogueLines.text = currentConversation[dialogueCount];
+        dialogueCount++;
     }
     public void RunKeyLine()
     {

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class OverrideDialogueSystem : MonoBehaviour
@@ -44,9 +45,17 @@ public class OverrideDialogueSystem : MonoBehaviour
             if (lineCount == lines.Length)
             {
                 Debug.Log("cutscene over");
+                this.gameObject.SetActive(false);
                 GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<Animator>().Play("Worm_Yippee_Static");
+                if (SceneManager.GetActiveScene().buildIndex == 5)
+                {
+                    GameObject.FindGameObjectWithTag("GameController").GetComponent<GM>().DogFadeCutscene();
+                }
+                else if (SceneManager.GetActiveScene().buildIndex == 6)
+                {
+                    GameObject.FindGameObjectWithTag("GameController").GetComponent<GM>().LoadScene(4);
+                }
                 return;
-                //GameObject.FindGameObjectWithTag("GameController").GetComponent<GM>().LoadScene(0);
             }
             ProgressConversation();
         }
