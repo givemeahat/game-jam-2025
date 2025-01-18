@@ -315,6 +315,9 @@ AnimatorStateMachine:
   - serializedVersion: 1
     m_State: {fileID: 672999666190616126}
     m_Position: {x: 520, y: 170, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 1443559824525581170}
+    m_Position: {x: 575.0283, y: 15.515289, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
   - {fileID: -6348038955905158639}
@@ -424,6 +427,32 @@ AnimatorState:
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
   m_Motion: {fileID: 7400000, guid: 99cb3a894b7bc694ba3ac8c2e7219693, type: 2}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
+--- !u!1102 &1443559824525581170
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Worm_Yippee_Static
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: 991491b105bded440b06d97b7b8abbfe, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

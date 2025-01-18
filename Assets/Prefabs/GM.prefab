@@ -2058,7 +2058,10 @@ MonoBehaviour:
   finishedDragonQuest: 0
   hasObtainedDragon: 0
   companions: []
-  companionPrefabs: []
+  companionPrefabs:
+  - {fileID: 8611096718080919442, guid: 67ede074a882ed947bdeee327be0f142, type: 3}
+  - {fileID: 6342186624549682910}
+  - {fileID: 2756635186087460642}
 --- !u!114 &7788654897453085535
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2076,6 +2079,7 @@ MonoBehaviour:
   currentConversation: []
   cherryText: {fileID: 1213968453095583128}
   menu: {fileID: 8439358096243457786}
+  loadingScreen: {fileID: 0}
   dialogueBox: {fileID: 5970408995089131089}
   dialogueBoxName: {fileID: 1562768131773670396}
   dialogueLines: {fileID: 7676698439516908734}
