@@ -51,6 +51,10 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
+        if (gm == null)
+        {
+            gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GM>();
+        }
         rb = this.GetComponent<Rigidbody2D>();
         pCanvasController = this.GetComponentInChildren<PlayerCanvasController>();
         anim = GetComponentInChildren<Animator>();
@@ -63,6 +67,10 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        if (gm == null)
+        {
+            gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GM>();
+        }
         //inputs
         ProcessInputs();
         if (gm.hasObtainedDragon && jumpCountMax == 1) jumpCountMax = 2;
@@ -176,7 +184,9 @@ public class Player : MonoBehaviour
         if(_coll.transform.parent != null) _mainObject = _coll.transform.parent.gameObject;
         if (_coll.tag == "LoadZone")
         {
-            gm.LoadScene(_coll.GetComponent<LoadZone>().buildIndexToLoad);
+            LoadZone loadScript = _coll.GetComponent<LoadZone>();
+            if (loadScript.passPositionThru) gm.LoadSceneAndPosition(loadScript.buildIndexToLoad, loadScript.positionToLoadAt, loadScript.flipX);
+            else gm.LoadScene(loadScript.buildIndexToLoad);
         }
         //cherry collecting!
         else if (_coll.tag == "Cherry")

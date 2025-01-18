@@ -282,7 +282,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.29990852, y: -0.010681269, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.85, y: 0.85, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4812794992321728593}
@@ -308,7 +308,7 @@ MonoBehaviour:
   jumpForce: 3750
   jumpCount: 0
   jumpCountMax: 1
-  checkRadius: 0.01
+  checkRadius: 0.2
   groundCheck: {fileID: 5262820646257206426}
   groundObjects:
     serializedVersion: 2
@@ -382,8 +382,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 5
-  m_LinearDrag: 0.15
-  m_AngularDrag: 7.23
+  m_LinearDrag: 0
+  m_AngularDrag: 0
   m_GravityScale: 3.5
   m_Material: {fileID: 6200000, guid: c15c6ff7796d5fc40a8e666cc5668c40, type: 2}
   m_IncludeLayers:

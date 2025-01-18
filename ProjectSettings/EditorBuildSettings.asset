@@ -6,8 +6,20 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/WormHouse.unity
+    path: Assets/Scenes/Title.unity
+    guid: 43d7fb6f0f0bd68498b9f04bd94f5c93
+  - enabled: 1
+    path: Assets/Scenes/Room1_WormHouse.unity
     guid: 742aba1419e3f844d94832e8e20a439f
+  - enabled: 1
+    path: Assets/Scenes/Room2_Between Wormy and Bongo.unity
+    guid: 9fa4224eca70fa3489360bf8c5cd38c8
+  - enabled: 1
+    path: Assets/Scenes/Room3_Key Location.unity
+    guid: 0a7c20d9865dde34c91e22de867e26b5
+  - enabled: 1
+    path: Assets/Scenes/Room4_BongoHouse.unity
+    guid: 756d235fc84e7db42b528eafb9e3f466
   - enabled: 1
     path: Assets/Scenes/Doggy_Cutscene.unity
     guid: caaf06caec9cf014eb61d720d6f8dde5

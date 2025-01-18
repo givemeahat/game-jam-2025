@@ -77,11 +77,14 @@ public class GM : MonoBehaviour
     {
         StartCoroutine(DogCutscene());
     }
+    public void LoadSceneAndPosition(int _index, Vector3 _position, bool _flipX)
+    {
+        StartCoroutine(LoadInSceneAndPosition(_index, _position, _flipX));
+    }
     public void LoadScene(int _index)
     {
         StartCoroutine(LoadInScene(_index));
     }
-
     IEnumerator DogCutscene()
     {
         TextMeshProUGUI cherryText = UIController.cherryLoadScreenText;
@@ -112,12 +115,24 @@ public class GM : MonoBehaviour
         SceneManager.LoadScene(1);
         _loadingScreen.GetComponent<Animator>().Play("LoadingScreen_FadeOut");
     }
+    IEnumerator LoadInSceneAndPosition(int _index, Vector3 _position, bool _flipX)
+    {
+        GameObject _loadingScreen = UIController.loadingScreen;
+        _loadingScreen.SetActive(true);
+        yield return new WaitForSeconds(.5f);
+        SceneManager.LoadScene(_index);
+        yield return new WaitForSeconds(.1f);
+        GameObject.FindGameObjectWithTag("Player").transform.position = _position;
+        GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<SpriteRenderer>().flipX = _flipX;
+        _loadingScreen.GetComponent<Animator>().Play("LoadingScreen_FadeOut");
+    }
     IEnumerator LoadInScene(int _index)
     {
         GameObject _loadingScreen = UIController.loadingScreen;
         _loadingScreen.SetActive(true);
         yield return new WaitForSeconds(.5f);
         SceneManager.LoadScene(_index);
+        yield return new WaitForSeconds(.1f);
         _loadingScreen.GetComponent<Animator>().Play("LoadingScreen_FadeOut");
     }
     IEnumerator SimpleFade()
