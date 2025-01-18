@@ -11,7 +11,10 @@ public class GMUIController : MonoBehaviour
     public string[] currentConversation;
 
     public TextMeshProUGUI cherryText;
+
     public GameObject menu;
+
+    public GameObject loadingScreen;
 
     //---dialogue---
     public GameObject dialogueBox;
@@ -46,6 +49,11 @@ public class GMUIController : MonoBehaviour
             gm.AddDog();
             dialogueBoxName.text = " ";
             Destroy(_player.GetComponent<Player>().currentInteractive.transform.parent.gameObject);
+        }
+        if (gm.currentQuest == GM.Questline.DOG && gm.hasTalkedToDog && gm.hasObtainedDog && !gm.finishedDogQuest && dialogueCount == currentConversation.Length)
+        {
+            gm.finishedDogQuest = true;
+            gm.DogFadeCutscene();
         }
         if (dialogueCount == currentConversation.Length)
         {

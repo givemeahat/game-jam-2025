@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GM : MonoBehaviour
 {
@@ -66,4 +67,40 @@ public class GM : MonoBehaviour
         cherryCount++;
         UIController.UpdateCherryText(cherryCount);
     }
+
+    public void FadeToBlack()
+    {
+        StartCoroutine(SimpleFade());
+    }
+    public void DogFadeCutscene()
+    {
+        StartCoroutine(DogCutscene());
+    }
+    public void LoadScene(int _index)
+    {
+        StartCoroutine(LoadInScene(_index));
+    }
+
+    IEnumerator DogCutscene()
+    {
+        GameObject _loadingScreen = UIController.loadingScreen;
+        yield return new WaitForSeconds(.5f);
+        //add cherry addition animation here
+        //load cutscene where dog says last lines; transition to real scene after
+        _loadingScreen.GetComponent<Animator>().Play("LoadingScreen_FadeOut");
+    }
+    IEnumerator LoadInScene(int _index)
+    {
+        GameObject _loadingScreen = UIController.loadingScreen;
+        LoadScene(_index);
+        yield return new WaitForSeconds(.5f);
+        _loadingScreen.GetComponent<Animator>().Play("LoadingScreen_FadeOut");
+    }
+    IEnumerator SimpleFade()
+    {
+        GameObject _loadingScreen = UIController.loadingScreen;
+        yield return new WaitForSeconds(.5f);
+        _loadingScreen.GetComponent<Animator>().Play("LoadingScreen_FadeOut");
+    }
+
 }

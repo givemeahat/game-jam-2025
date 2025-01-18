@@ -102,6 +102,11 @@ MonoBehaviour:
     in them...
   - Sstho... I thort of need thothe before I can help you gather cherrieth.
   - If you can find my booths, we can go cherry hunting together!
-  questFinishedDialogue: []
-  finalDragonDialogue: []
+  questFinishedDialogue:
+  - Oh thank goodnessth! My booths! Oh, my poor aching archessth...
+  - Jussth a moment, pleathe...
+  finalDragonDialogue:
+  - Ahhh, that issth sstho much better.
+  - Now that that'sth taken care of...
+  - Let'ssth take to the ssthkiessth and find thossthe cherriesth!
   hasFinishedQuest: 0
