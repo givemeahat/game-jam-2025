@@ -22,13 +22,13 @@ public class Dog : MonoBehaviour
     {
         if (!gm.hasTalkedToDog)
         {
-            gm.UIController.RunConversation(meetDialogue, "Doggy");
+            gm.UIController.RunConversation(meetDialogue, "Bongo");
             gm.currentQuest = GM.Questline.DOG;
             gm.hasTalkedToDog = true;
         }
         if (gm.finishedDogQuest)
         {
-            gm.UIController.RunConversation(questFinishedDialogue, "Doggy");
+            gm.UIController.RunConversation(questFinishedDialogue, "Bongo");
         }
     }
 

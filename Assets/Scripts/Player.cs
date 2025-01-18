@@ -38,6 +38,12 @@ public class Player : MonoBehaviour
     bool canGrabKey;
     bool canGrabBandana;
     bool canGrabBoots;
+    
+    //---checks for quest diversion---
+    bool hasGrabbedKey;
+    bool hasGrabbedBandana;
+    bool hasGrabbedBoots;
+
     public string[] questDialogue;
 
     //---animation---
@@ -95,10 +101,12 @@ public class Player : MonoBehaviour
                 anim.SetTrigger("Interact");
                 if (pCanvasController.talkText.IsActive()) pCanvasController.HideTalkText();
             }
-            if (canGrabKey)
+            if (canGrabKey && !hasGrabbedKey)
             {
                 if (pCanvasController.grabText.IsActive()) pCanvasController.HideGrabText();
-                gm.UIController.RunLine(questDialogue[0], " ");
+                gm.UIController.RunKeyLine();
+                currentInteractive.FeedThroughMethod();
+                return;
             }
             if (canGrabBandana)
             {
@@ -108,7 +116,7 @@ public class Player : MonoBehaviour
             {
                 if (pCanvasController.grabText.IsActive()) pCanvasController.HideGrabText();
             }
-            if (gm.hasObtainedDog)
+            if (gm.hasObtainedDog && canDig)
             {
                 //Debug.Log("Doggy dug something up!");
                 currentInteractive.FeedThroughMethod();
@@ -221,9 +229,21 @@ public class Player : MonoBehaviour
         if (pCanvasController.talkText.IsActive()) pCanvasController.HideTalkText();
         if (pCanvasController.digText.IsActive()) pCanvasController.HideDigText();
         if (pCanvasController.breakText.IsActive()) pCanvasController.HideBreakText();
-        if (canGrabKey) canGrabKey = false;
-        if (canGrabBandana) canGrabBandana = false;
-        if (canGrabBoots) canGrabBoots = false;
+        if (canGrabKey)
+        {
+            canGrabKey = false;
+            pCanvasController.HideGrabText();
+        }
+        if (canGrabBandana)
+        {
+            canGrabBandana = false;
+            pCanvasController.HideGrabText();
+        }
+        if (canGrabBoots)
+        {
+            canGrabBoots = false;
+            pCanvasController.HideGrabText();
+        }
 
     }
 

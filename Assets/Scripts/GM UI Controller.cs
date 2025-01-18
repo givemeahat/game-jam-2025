@@ -16,11 +16,16 @@ public class GMUIController : MonoBehaviour
 
     public GameObject loadingScreen;
 
+    public GameObject cherryCountObj;
+    public TextMeshProUGUI cherryLoadScreenText;
+
     //---dialogue---
     public GameObject dialogueBox;
     public TextMeshProUGUI dialogueBoxName;
     public TextMeshProUGUI dialogueLines;
     public int dialogueCount;
+
+    bool progressToBongoCutscene;
 
     private void Awake()
     {
@@ -65,6 +70,11 @@ public class GMUIController : MonoBehaviour
             _player.GetComponent<Player>().enabled = true;
             dialogueCount = 0;
             currentConversation.Clear();
+            if (progressToBongoCutscene)
+            {
+                //gm load bongo cutscene part 1
+                //gm.LoadScene(whatever);
+            }
         }
         else if (dialogueCount < currentConversation.Count)
         {
@@ -93,16 +103,42 @@ public class GMUIController : MonoBehaviour
         dialogueLines.GetComponent<TextMeshProEffect>().Play();
         dialogueLines.text = currentConversation[dialogueCount];
     }
-    public void RunLine(string _line, string _name)
+    public void RunKeyLine()
     {
         dialogueCount = 0;
         isConversing = true;
-        currentConversation.Add(_line);
-        dialogueBoxName.text = _name;
+        currentConversation.Clear();
+        currentConversation.Add("<i>Wormy has obtained the pantry key!</i>");
+        dialogueLines.text = currentConversation[0];
+        dialogueBoxName.text = " ";
         dialogueBox.SetActive(true);
         GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().enabled = false;
         dialogueLines.GetComponent<TextMeshProEffect>().Play();
-        dialogueLines.text = currentConversation[dialogueCount];
+        dialogueCount++;
+        progressToBongoCutscene = true;
+        //dialogueLines.text = currentConversation[dialogueCount];
+    }
+    public void RunBandanaLine()
+    {
+        dialogueCount = 0;
+        isConversing = true;
+        currentConversation.Add("<i>Wormy has unearthed Daisy's bandana!</i>");
+        dialogueBoxName.text = " ";
+        dialogueBox.SetActive(true);
+        GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().enabled = false;
+        dialogueLines.GetComponent<TextMeshProEffect>().Play();
+        //dialogueLines.text = currentConversation[dialogueCount];
+    }
+    public void RunBootsLine()
+    {
+        dialogueCount = 0;
+        isConversing = true;
+        currentConversation.Add("<i>Wormy has located Boots' boots!</i>");
+        dialogueBoxName.text = " ";
+        dialogueBox.SetActive(true);
+        GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().enabled = false;
+        dialogueLines.GetComponent<TextMeshProEffect>().Play();
+        //dialogueLines.text = currentConversation[dialogueCount];
     }
     public void PrintText()
     {

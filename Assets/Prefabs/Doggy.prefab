@@ -281,13 +281,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gm: {fileID: 0}
   meetDialogue:
-  - Oh, hey! Saw you gathering cherries down there, woof woof! I'm Doggy!
+  - Oh, hey! Saw you gathering cherries down there, woof woof! I'm Bingbong, Bongo
+    for short!
   - You say you're trying to throw a cherry party? Oh, woooof! I have just the thing.
     Except...
   - Well, um... See, I have lotsa cherries in my pantry, but, well...
   - I kinda... buried the key and immediately forgot where! :3
   - If you help me find my pantry key, I can give you my cherries, bark bark!
-  - <b>Doggy has joined your party!</b>
+  - <b>Bongo has joined your party!</b>
   - <i>Interact with dig spots to dig and retrieve the item underground!</i>
   questFinishedDialogue:
   - Oh wow, you found it! I thought I'd lost that key for good, woof!

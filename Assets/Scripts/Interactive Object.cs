@@ -28,6 +28,11 @@ public class InteractiveObject : MonoBehaviour
         {
             parent.GetComponent<Dragon>().ConversationManager();
         }
+        if (parent.tag == "Key")
+        {
+            Destroy(parent.gameObject);
+            Debug.Log("Destroyed Key");
+        }
         /*if (parent.tag == "Cat")
         {
             parent.GetComponent<Cat>(SomeMethod());

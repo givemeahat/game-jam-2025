@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GM : MonoBehaviour
 {
@@ -83,9 +84,29 @@ public class GM : MonoBehaviour
 
     IEnumerator DogCutscene()
     {
+        TextMeshProUGUI cherryText = UIController.cherryLoadScreenText;
         GameObject _loadingScreen = UIController.loadingScreen;
         _loadingScreen.SetActive(true);
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitForSeconds(1.5f);
+        cherryText.text = "x "+ cherryCount;
+        UIController.cherryCountObj.SetActive(true);
+        cherryCount++;
+        cherryText.text = "x " + cherryCount;
+        yield return new WaitForSeconds(.15f);
+        cherryCount++;
+        cherryText.text = "x " + cherryCount;
+        yield return new WaitForSeconds(.15f);
+        cherryCount++;
+        cherryText.text = "x " + cherryCount;
+        yield return new WaitForSeconds(.15f);
+        cherryCount++;
+        cherryText.text = "x " + cherryCount;
+        yield return new WaitForSeconds(.15f);
+        cherryCount++;
+        cherryText.text = "x " + cherryCount;
+        UIController.UpdateCherryText(cherryCount);
+        yield return new WaitForSeconds(1.5f);
+        UIController.cherryCountObj.SetActive(false);
         //add cherry addition animation here
         //load cutscene where dog says last lines; transition to real scene after
         SceneManager.LoadScene(1);
