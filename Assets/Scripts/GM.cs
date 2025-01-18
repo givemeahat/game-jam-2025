@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class GM : MonoBehaviour
 {
-    public enum Questline { DOG, BEAR, DRAGON };
-    public Questline currentQuest;
+    public enum Questline { NONE, DOG, BEAR, DRAGON };
+    public Questline currentQuest = Questline.NONE;
 
-    public enum CurrentFollower { DOG, BEAR, DRAGON };
-    public CurrentFollower currentFollower;
+    public enum CurrentFollower { NONE, DOG, BEAR, DRAGON };
+    public CurrentFollower currentFollower = CurrentFollower.NONE;
 
     private Player player;
     public int cherryCount;
@@ -44,13 +44,15 @@ public class GM : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Escape))
         {
-            UIController.OpenMenu();
+            UIController.ToggleMenu();
         }
     }
 
     public void AddDog()
     {
         hasObtainedDog = true;
+        currentQuest = Questline.DOG;
+        currentFollower = CurrentFollower.DOG;
     }
 
     public void AddCherry()

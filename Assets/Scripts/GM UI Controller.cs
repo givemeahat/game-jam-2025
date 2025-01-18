@@ -61,9 +61,9 @@ public class GMUIController : MonoBehaviour
         }
     }
 
-    public void OpenMenu()
+    public void ToggleMenu()
     {
-        menu.SetActive(true);
+        menu.SetActive(!menu.activeInHierarchy);
     }
 
     public void RunConversation(string[] _lines, string _name)
