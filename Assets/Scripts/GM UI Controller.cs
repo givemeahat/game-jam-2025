@@ -34,6 +34,7 @@ public class GMUIController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Return) && isConversing)
         {
             ProgressConversation();
+            dialogueCount++;
         }
     }
 
@@ -41,13 +42,13 @@ public class GMUIController : MonoBehaviour
     {
         GameObject _player = GameObject.FindGameObjectWithTag("Player");
 
-        if (gm.currentQuest == GM.Questline.DOG && gm.hasTalkedToDog && !gm.hasObtainedDog && dialogueCount == 4)
+        if (gm.currentQuest == GM.Questline.DOG && gm.hasTalkedToDog && !gm.hasObtainedDog && dialogueCount == 5)
         {
             gm.AddDog();
             dialogueBoxName.text = " ";
             Destroy(_player.GetComponent<Player>().currentInteractive.transform.parent.gameObject);
         }
-        if (dialogueCount == currentConversation.Length-1)
+        if (dialogueCount == currentConversation.Length)
         {
             dialogueBox.SetActive(false);
             isConversing = false;
@@ -56,7 +57,6 @@ public class GMUIController : MonoBehaviour
         }
         else if (dialogueCount < currentConversation.Length)
         {
-            dialogueCount++;
             PrintText();
         }
     }
@@ -68,6 +68,7 @@ public class GMUIController : MonoBehaviour
 
     public void RunConversation(string[] _lines, string _name)
     {
+        dialogueCount = 0;
         isConversing = true;
         currentConversation = _lines;
         dialogueBoxName.text = _name;
