@@ -8,7 +8,7 @@ public class GMUIController : MonoBehaviour
 {
     public GM gm;
     public bool isConversing = false;
-    public string[] currentConversation;
+    public List<string> currentConversation;
 
     public TextMeshProUGUI cherryText;
 
@@ -43,29 +43,38 @@ public class GMUIController : MonoBehaviour
     private void ProgressConversation()
     {
         GameObject _player = GameObject.FindGameObjectWithTag("Player");
-
-        if (gm.currentQuest == GM.Questline.DOG && gm.hasTalkedToDog && !gm.hasObtainedDog && dialogueCount == 6)
+        /*if (gm.currentQuest == GM.Questline.DOG)
+        {
+            ManageDogDialogue(_player);
+        }*/
+        if (gm.hasTalkedToDog && !gm.hasObtainedDog && dialogueCount == 5)
         {
             gm.AddDog();
             dialogueBoxName.text = " ";
             Destroy(_player.GetComponent<Player>().currentInteractive.transform.parent.gameObject);
         }
-        if (gm.currentQuest == GM.Questline.DOG && gm.hasTalkedToDog && gm.hasObtainedDog && !gm.finishedDogQuest && dialogueCount == currentConversation.Length)
+        if (gm.hasTalkedToDog && gm.hasObtainedDog && gm.finishedDogQuest && dialogueCount == 2)
         {
-            gm.finishedDogQuest = true;
+            Debug.Log("Hello???");
             gm.DogFadeCutscene();
         }
-        if (dialogueCount == currentConversation.Length)
+        if (dialogueCount == currentConversation.Count)
         {
             dialogueBox.SetActive(false);
             isConversing = false;
             _player.GetComponent<Player>().enabled = true;
             dialogueCount = 0;
+            currentConversation.Clear();
         }
-        else if (dialogueCount < currentConversation.Length)
+        else if (dialogueCount < currentConversation.Count)
         {
             PrintText();
         }
+    }
+
+    private void ManageDogDialogue(GameObject _player)
+    {
+
     }
 
     public void ToggleMenu()
@@ -73,7 +82,7 @@ public class GMUIController : MonoBehaviour
         menu.SetActive(!menu.activeInHierarchy);
     }
 
-    public void RunConversation(string[] _lines, string _name)
+    public void RunConversation(List<string> _lines, string _name)
     {
         dialogueCount = 0;
         isConversing = true;
@@ -81,9 +90,20 @@ public class GMUIController : MonoBehaviour
         dialogueBoxName.text = _name;
         dialogueBox.SetActive(true);
         GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().enabled = false;
-        ProgressConversation();
+        dialogueLines.GetComponent<TextMeshProEffect>().Play();
+        dialogueLines.text = currentConversation[dialogueCount];
     }
-
+    public void RunLine(string _line, string _name)
+    {
+        dialogueCount = 0;
+        isConversing = true;
+        currentConversation.Add(_line);
+        dialogueBoxName.text = _name;
+        dialogueBox.SetActive(true);
+        GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().enabled = false;
+        dialogueLines.GetComponent<TextMeshProEffect>().Play();
+        dialogueLines.text = currentConversation[dialogueCount];
+    }
     public void PrintText()
     {
         dialogueLines.GetComponent<TextMeshProEffect>().Play();

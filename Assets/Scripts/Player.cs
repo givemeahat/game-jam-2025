@@ -34,6 +34,12 @@ public class Player : MonoBehaviour
     public bool canCrush;
     public bool canFly;
 
+    //---questline stuff---
+    bool canGrabKey;
+    bool canGrabBandana;
+    bool canGrabBoots;
+    public string[] questDialogue;
+
     //---animation---
     public Animator anim;
 
@@ -80,29 +86,46 @@ public class Player : MonoBehaviour
     //processes player inputs
     private void ProcessInputs()
     {
-        if (Input.GetKeyDown(KeyCode.Return) && canInteract)
+        if (Input.GetKeyDown(KeyCode.Return))
         {
-            currentInteractive.FeedThroughMethod();
-            rb.velocity = new Vector2(0, 0);
-            anim.SetTrigger("Interact");
-            if (pCanvasController.talkText.IsActive()) pCanvasController.HideTalkText();
+            if (canInteract)
+            {
+                currentInteractive.FeedThroughMethod();
+                rb.velocity = new Vector2(0, 0);
+                anim.SetTrigger("Interact");
+                if (pCanvasController.talkText.IsActive()) pCanvasController.HideTalkText();
+            }
+            if (canGrabKey)
+            {
+                if (pCanvasController.grabText.IsActive()) pCanvasController.HideGrabText();
+                gm.UIController.RunLine(questDialogue[0], " ");
+            }
+            if (canGrabBandana)
+            {
+                if (pCanvasController.grabText.IsActive()) pCanvasController.HideGrabText();
+            }
+            if (canGrabBoots)
+            {
+                if (pCanvasController.grabText.IsActive()) pCanvasController.HideGrabText();
+            }
+            if (gm.hasObtainedDog)
+            {
+                //Debug.Log("Doggy dug something up!");
+                currentInteractive.FeedThroughMethod();
+                //add later
+                //anim.SetTrigger("Dig");
+                if (pCanvasController.digText.IsActive()) pCanvasController.HideDigText();
+            }
+            if (gm.hasObtainedBear)
+            {
+                //Debug.Log("Doggy dug something up!");
+                currentInteractive.FeedThroughMethod();
+                //add later
+                //anim.SetTrigger("Dig");
+                if (pCanvasController.breakText.IsActive()) pCanvasController.HideBreakText();
+            }
         }
-        if (Input.GetKeyDown(KeyCode.Return) && gm.hasObtainedDog)
-        {
-            //Debug.Log("Doggy dug something up!");
-            currentInteractive.FeedThroughMethod();
-            //add later
-            //anim.SetTrigger("Dig");
-            if (pCanvasController.digText.IsActive()) pCanvasController.HideDigText();
-        }
-        if (Input.GetKeyDown(KeyCode.Return) && gm.hasObtainedBear)
-        {
-            //Debug.Log("Doggy dug something up!");
-            currentInteractive.FeedThroughMethod();
-            //add later
-            //anim.SetTrigger("Dig");
-            if (pCanvasController.breakText.IsActive()) pCanvasController.HideBreakText();
-        }
+
         moveDirection = Input.GetAxis("Horizontal");
         if (Input.GetKeyDown(KeyCode.Space) && jumpCount > 0)
         {
@@ -156,6 +179,27 @@ public class Player : MonoBehaviour
             currentInteractive = _coll.GetComponent<InteractiveObject>();
             pCanvasController.ShowTalkText();
         }
+        else if (_coll.tag == "Key")
+        {
+            canGrabKey = true;
+            gm.finishedDogQuest = true;
+            currentInteractive = _coll.GetComponent<InteractiveObject>();
+            pCanvasController.ShowGrabText();
+        }
+        else if (_coll.tag == "Bandana")
+        {
+            canGrabBandana = true;
+            gm.finishedBearQuest = true;
+            currentInteractive = _coll.GetComponent<InteractiveObject>();
+            pCanvasController.ShowGrabText();
+        }
+        else if (_coll.tag == "Boots")
+        {
+            canGrabBoots = true;
+            gm.finishedDragonQuest = true;
+            currentInteractive = _coll.GetComponent<InteractiveObject>();
+            pCanvasController.ShowGrabText();
+        }
         else if (_coll.tag == "DigSpot" && gm.hasObtainedDog)
         {
             canDig = true;
@@ -177,6 +221,10 @@ public class Player : MonoBehaviour
         if (pCanvasController.talkText.IsActive()) pCanvasController.HideTalkText();
         if (pCanvasController.digText.IsActive()) pCanvasController.HideDigText();
         if (pCanvasController.breakText.IsActive()) pCanvasController.HideBreakText();
+        if (canGrabKey) canGrabKey = false;
+        if (canGrabBandana) canGrabBandana = false;
+        if (canGrabBoots) canGrabBoots = false;
+
     }
 
     /*private IEnumerator Land()

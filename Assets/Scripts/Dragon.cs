@@ -6,9 +6,9 @@ public class Dragon : MonoBehaviour
 {
     public GM gm;
 
-    public string[] meetDialogue;
-    public string[] questFinishedDialogue;
-    public string[] finalDragonDialogue;
+    public List<string> meetDialogue;
+    public List<string> questFinishedDialogue;
+    public List<string> finalDragonDialogue;
 
 
     public bool hasFinishedQuest;

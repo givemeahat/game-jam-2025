@@ -6,9 +6,9 @@ public class Bear : MonoBehaviour
 {
     public GM gm;
 
-    public string[] meetDialogue;
-    public string[] questFinishedDialogue;
-    public string[] finalBearDialogue;
+    public List<string> meetDialogue;
+    public List<string> questFinishedDialogue;
+    public List<string> finalBearDialogue;
 
 
     public bool hasFinishedQuest;

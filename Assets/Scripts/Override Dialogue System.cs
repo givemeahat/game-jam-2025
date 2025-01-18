@@ -5,7 +5,7 @@ using TMPro;
 
 public class OverrideDialogueSystem : MonoBehaviour
 {
-    public TextMeshProUGUI name;
+    public TextMeshProUGUI nameText;
     public TextMeshProUGUI currentLine;
 
     public GameObject character;
@@ -18,21 +18,23 @@ public class OverrideDialogueSystem : MonoBehaviour
     public string[] lines;
     public int lineCount = 0;
 
-    public void Start()
+    public void Awake()
     {
+        currentLine.text = lines[lineCount];
+        currentLine.GetComponent<TextMeshProEffect>().Play();
+        lineCount++;
         if (isDog)
         {
-            name.text = "Doggy";
+            nameText.text = "Doggy";
         }
         if (isBear)
         {
-            name.text = "Bear";
+            nameText.text = "Bear";
         }
         if (isDragon)
         {
-            name.text = "Boots";
+            nameText.text = "Boots";
         }
-        ProgressConversation();
     }
 
     public void Update()

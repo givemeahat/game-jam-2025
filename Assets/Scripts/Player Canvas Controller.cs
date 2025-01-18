@@ -7,14 +7,17 @@ using TMPro;
 public class PlayerCanvasController : MonoBehaviour
 {
     public TextMeshProUGUI cherryGetText;
-    public TextMeshProUGUI talkText;
     public TextMeshProUGUI digText;
     public TextMeshProUGUI breakText;
+    public TextMeshProUGUI talkText;
+    public TextMeshProUGUI grabText;
 
+    //---cherry get---
     public void CherryGet()
     {
         cherryGetText.gameObject.SetActive(true);
     }
+    //---dig---
     public void ShowDigText()
     {
         digText.gameObject.SetActive(true);
@@ -23,6 +26,7 @@ public class PlayerCanvasController : MonoBehaviour
     {
         digText.GetComponent<Animator>().Play("Talk_Disappear");
     }
+    //---break---
     public void ShowBreakText()
     {
         breakText.gameObject.SetActive(true);
@@ -31,6 +35,7 @@ public class PlayerCanvasController : MonoBehaviour
     {
         breakText.GetComponent<Animator>().Play("Talk_Disappear");
     }
+    //---talk---
     public void ShowTalkText()
     {
         talkText.gameObject.SetActive(true);
@@ -38,5 +43,14 @@ public class PlayerCanvasController : MonoBehaviour
     public void HideTalkText()
     {
         talkText.GetComponent<Animator>().Play("Talk_Disappear");
+    }
+    //---grab---
+    public void ShowGrabText()
+    {
+        grabText.gameObject.SetActive(true);
+    }
+    public void HideGrabText()
+    {
+        grabText.GetComponent<Animator>().Play("Talk_Disappear");
     }
 }

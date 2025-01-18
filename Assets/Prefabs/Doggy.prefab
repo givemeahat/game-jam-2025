@@ -281,7 +281,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gm: {fileID: 0}
   meetDialogue:
-  - 
   - Oh, hey! Saw you gathering cherries down there, woof woof! I'm Doggy!
   - You say you're trying to throw a cherry party? Oh, woooof! I have just the thing.
     Except...
@@ -291,7 +290,7 @@ MonoBehaviour:
   - <b>Doggy has joined your party!</b>
   - <i>Interact with dig spots to dig and retrieve the item underground!</i>
   questFinishedDialogue:
-  - Oh wow, you found it! I thought I'd lost that key for forever, woof!
+  - Oh wow, you found it! I thought I'd lost that key for good, woof!
   - Well, let's go get those cherries from the pantry!
   finalDogDialogue:
   - Bark bark! Now that you've got your cherries, you can have your party!

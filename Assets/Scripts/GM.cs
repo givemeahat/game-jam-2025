@@ -84,15 +84,17 @@ public class GM : MonoBehaviour
     IEnumerator DogCutscene()
     {
         GameObject _loadingScreen = UIController.loadingScreen;
+        _loadingScreen.SetActive(true);
         yield return new WaitForSeconds(.5f);
         //add cherry addition animation here
         //load cutscene where dog says last lines; transition to real scene after
+        SceneManager.LoadScene(1);
         _loadingScreen.GetComponent<Animator>().Play("LoadingScreen_FadeOut");
     }
     IEnumerator LoadInScene(int _index)
     {
         GameObject _loadingScreen = UIController.loadingScreen;
-        LoadScene(_index);
+        SceneManager.LoadScene(_index);
         yield return new WaitForSeconds(.5f);
         _loadingScreen.GetComponent<Animator>().Play("LoadingScreen_FadeOut");
     }

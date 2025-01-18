@@ -6,9 +6,9 @@ public class Dog : MonoBehaviour
 {
     public GM gm;
 
-    public string[] meetDialogue;
-    public string[] questFinishedDialogue;
-    public string[] finalDogDialogue;
+    public List<string> meetDialogue;
+    public List<string> questFinishedDialogue;
+    public List<string> finalDogDialogue;
 
 
     public bool hasFinishedQuest;

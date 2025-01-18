@@ -12,6 +12,9 @@ TagManager:
   - Interactive
   - DigSpot
   - BreakableWall
+  - Key
+  - Bandana
+  - Boots
   layers:
   - Default
   - TransparentFX

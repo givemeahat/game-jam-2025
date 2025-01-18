@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/Cherry Party.unity
+    guid: 742aba1419e3f844d94832e8e20a439f
+  - enabled: 1
+    path: Assets/Scenes/Doggy_Cutscene.unity
+    guid: caaf06caec9cf014eb61d720d6f8dde5
   m_configObjects: {}

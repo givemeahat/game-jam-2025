@@ -2079,7 +2079,7 @@ MonoBehaviour:
   currentConversation: []
   cherryText: {fileID: 1213968453095583128}
   menu: {fileID: 8439358096243457786}
-  loadingScreen: {fileID: 0}
+  loadingScreen: {fileID: 6666736319004211672}
   dialogueBox: {fileID: 5970408995089131089}
   dialogueBoxName: {fileID: 1562768131773670396}
   dialogueLines: {fileID: 7676698439516908734}
