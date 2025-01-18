@@ -56,6 +56,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bear
       objectReference: {fileID: 0}
+    - target: {fileID: 8611096718080919442, guid: 67ede074a882ed947bdeee327be0f142, type: 3}
+      propertyPath: m_TagString
+      value: Bear
+      objectReference: {fileID: 0}
+    - target: {fileID: 9014071811213298334, guid: 67ede074a882ed947bdeee327be0f142, type: 3}
+      propertyPath: m_FlipX
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9014071811213298334, guid: 67ede074a882ed947bdeee327be0f142, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -87,7 +95,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gm: {fileID: 0}
-  meetDialogue: []
-  questFinishedDialogue: []
-  finalBearDialogue: []
+  meetDialogue:
+  - Oh... Visitors... Hello...
+  - Um... Can I help you...?
+  - Oh, a cherry party? That sounds... fun...! I think I know where some cherries
+    are...
+  - But, uh...
+  - Well, I don't like to go out without my bandana... See, I'm s-sorta... self-conscious
+    without it...
+  - But I lost it deep in the woods... back when the leaves fell...
+  - S-so I haven't left my cave much since then...
+  - If you could find my bandana... I could help you find cherries, maybe...
+  questFinishedDialogue:
+  - '!!!'
+  - My bandana...! I never thought I'd see it again...!
+  - Thank you...
+  finalBearDialogue:
+  - I think... I think I feel confident to come with you now!
+  - Let's find some cherries for your party!
+  - There are lots of hidden passageways in these woods!
+  - Just tell me where and I can break down some walls with my strength!
+  - <b>Bear has joined your party!</b>
+  - <i>You can now interact with breakable walls to reveal hidden passageways!</i>
   hasFinishedQuest: 0

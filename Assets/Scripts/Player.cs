@@ -85,7 +85,7 @@ public class Player : MonoBehaviour
             currentInteractive.FeedThroughMethod();
             rb.velocity = new Vector2(0, 0);
             anim.SetTrigger("Interact");
-            pCanvasController.HideTalkText();
+            if (pCanvasController.talkText.IsActive()) pCanvasController.HideTalkText();
         }
         if (Input.GetKeyDown(KeyCode.Return) && gm.hasObtainedDog)
         {
@@ -93,7 +93,7 @@ public class Player : MonoBehaviour
             currentInteractive.FeedThroughMethod();
             //add later
             //anim.SetTrigger("Dig");
-            pCanvasController.HideDigText();
+            if (pCanvasController.digText.IsActive()) pCanvasController.HideDigText();
         }
         if (Input.GetKeyDown(KeyCode.Return) && gm.hasObtainedBear)
         {
@@ -101,7 +101,7 @@ public class Player : MonoBehaviour
             currentInteractive.FeedThroughMethod();
             //add later
             //anim.SetTrigger("Dig");
-            pCanvasController.HideDigText();
+            if (pCanvasController.breakText.IsActive()) pCanvasController.HideBreakText();
         }
         moveDirection = Input.GetAxis("Horizontal");
         if (Input.GetKeyDown(KeyCode.Space) && jumpCount > 0)

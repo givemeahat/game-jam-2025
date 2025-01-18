@@ -56,6 +56,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dragon
       objectReference: {fileID: 0}
+    - target: {fileID: 8611096718080919442, guid: 67ede074a882ed947bdeee327be0f142, type: 3}
+      propertyPath: m_TagString
+      value: Dragon
+      objectReference: {fileID: 0}
     - target: {fileID: 9014071811213298334, guid: 67ede074a882ed947bdeee327be0f142, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -87,7 +91,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gm: {fileID: 0}
-  meetDialogue: []
+  meetDialogue:
+  - Strangerssth! Welcome to my mountain passth! Not many choothe to join me up here!
+  - But the view issth ssthickening, no?
+  - ...Oh, I ssthee! You need help with a cherry party! Well, there thertainly are
+    cherrieth around here...
+  - But, ah...
+  - While I wath flying over the land rethently, my booths came right off my feet!
+  - You ssthee, I have bad arch thupport, sstho they have cussthtom orthoticthssth
+    in them...
+  - Sstho... I thort of need thothe before I can help you gather cherrieth.
+  - If you can find my booths, we can go cherry hunting together!
   questFinishedDialogue: []
   finalDragonDialogue: []
   hasFinishedQuest: 0

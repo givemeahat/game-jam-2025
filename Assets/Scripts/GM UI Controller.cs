@@ -34,7 +34,6 @@ public class GMUIController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Return) && isConversing)
         {
             ProgressConversation();
-            dialogueCount++;
         }
     }
 
@@ -42,7 +41,7 @@ public class GMUIController : MonoBehaviour
     {
         GameObject _player = GameObject.FindGameObjectWithTag("Player");
 
-        if (gm.currentQuest == GM.Questline.DOG && gm.hasTalkedToDog && !gm.hasObtainedDog && dialogueCount == 5)
+        if (gm.currentQuest == GM.Questline.DOG && gm.hasTalkedToDog && !gm.hasObtainedDog && dialogueCount == 6)
         {
             gm.AddDog();
             dialogueBoxName.text = " ";
@@ -52,8 +51,8 @@ public class GMUIController : MonoBehaviour
         {
             dialogueBox.SetActive(false);
             isConversing = false;
-            dialogueCount = 0;
             _player.GetComponent<Player>().enabled = true;
+            dialogueCount = 0;
         }
         else if (dialogueCount < currentConversation.Length)
         {
@@ -72,14 +71,15 @@ public class GMUIController : MonoBehaviour
         isConversing = true;
         currentConversation = _lines;
         dialogueBoxName.text = _name;
-        PrintText();
         dialogueBox.SetActive(true);
         GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().enabled = false;
+        ProgressConversation();
     }
 
     public void PrintText()
     {
         dialogueLines.GetComponent<TextMeshProEffect>().Play();
         dialogueLines.text = currentConversation[dialogueCount];
+        dialogueCount++;
     }
 }
