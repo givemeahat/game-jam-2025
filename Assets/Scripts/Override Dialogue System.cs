@@ -10,6 +10,7 @@ public class OverrideDialogueSystem : MonoBehaviour
     public TextMeshProUGUI currentLine;
 
     public GameObject character;
+    public bool isWorm;
     public bool isDog;
     public bool isBear;
     public bool isDragon;
@@ -47,15 +48,33 @@ public class OverrideDialogueSystem : MonoBehaviour
                 Debug.Log("cutscene over");
                 this.gameObject.SetActive(false);
                 GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<Animator>().Play("Worm_Yippee_Static");
-                if (SceneManager.GetActiveScene().buildIndex == 5)
+                if (isDog)
                 {
-                    GameObject.FindGameObjectWithTag("GameController").GetComponent<GM>().DogFadeCutscene();
+                    if (SceneManager.GetActiveScene().buildIndex == 5)
+                    {
+                        GameObject.FindGameObjectWithTag("GameController").GetComponent<GM>().DogFadeCutscene();
+                    }
+                    else if (SceneManager.GetActiveScene().buildIndex == 6)
+                    {
+                        GameObject.FindGameObjectWithTag("GameController").GetComponent<GM>().LoadScene(4);
+                    }
+                    return;
                 }
-                else if (SceneManager.GetActiveScene().buildIndex == 6)
+                if (isWorm)
                 {
-                    GameObject.FindGameObjectWithTag("GameController").GetComponent<GM>().LoadScene(4);
+                    GM _gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GM>();
+                    _gm.LoadSceneAndPosition(1, new Vector3(-5.74f, 0.63f, 0), false);
+                    _gm.UIController.cherryText.gameObject.SetActive(true);
                 }
-                return;
+            }
+            if (isWorm && lineCount == 3)
+            {
+                Debug.Log("Wormy walks to tree.");
+                StartCoroutine(WormyWalks());
+            }
+            if (isWorm && lineCount == 4)
+            {
+                GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<Animator>().Play("Worm_Yippee_Static");
             }
             ProgressConversation();
         }
@@ -66,5 +85,26 @@ public class OverrideDialogueSystem : MonoBehaviour
         currentLine.text = lines[lineCount];
         currentLine.GetComponent<TextMeshProEffect>().Play();
         lineCount++;
+    }
+
+    IEnumerator WormyWalks()
+    {
+        GameObject _wormy = GameObject.FindGameObjectWithTag("Player");
+        Vector3 _startPos = new Vector3(-5.74f, .63f, 0f);
+        Vector3 _endPos = new Vector3(-10.04f, .63f, 0f);
+        float _xPos = -5.74f;
+        float _time = 2f;
+        float _currentTime = 0f;
+        _wormy.GetComponentInChildren<SpriteRenderer>().flipX = true;
+        _wormy.GetComponentInChildren<Animator>().Play("Worm_Walk");
+        while (_currentTime <= _time)
+        {
+            _xPos = Mathf.Lerp(_startPos.x, _endPos.x, _currentTime / _time);
+            _wormy.transform.position = new Vector3(_xPos, _wormy.transform.position.y, 0f);
+            _currentTime += Time.deltaTime;
+            yield return null;
+        }
+        _wormy.GetComponentInChildren<Animator>().Play("Worm_Idle");
+        _wormy.transform.position = _endPos;
     }
 }

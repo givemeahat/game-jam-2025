@@ -1299,7 +1299,7 @@ Transform:
   m_GameObject: {fileID: 5464379310329050157}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.2899084, y: -0.6706813, z: -10}
+  m_LocalPosition: {x: -5.74, y: 0.2, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2154,6 +2154,7 @@ MonoBehaviour:
   pickedUpCherries: 
   currentQuest: 0
   currentFollower: 0
+  startPosition: {x: -5.74, y: 0.2, z: -0.03062148}
   playerPrefab: {fileID: 2671858344059225241, guid: 156bb24acd7ae2d4086693afe8003f44, type: 3}
   cherryCount: 0
   PartyMembers: []

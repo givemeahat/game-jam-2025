@@ -16,7 +16,7 @@ public class GM : MonoBehaviour
     public enum CurrentFollower { NONE, DOG, BEAR, DRAGON };
     public CurrentFollower currentFollower = CurrentFollower.NONE;
 
-    private Vector3 startPosition = new Vector3(-5.73999977f, .2f, -0.0306214802f);
+    public Vector3 startPosition = new Vector3(-5.73999977f, .2f, -0.0306214802f);
     private Player player;
     public GameObject playerPrefab;
     public int cherryCount;
