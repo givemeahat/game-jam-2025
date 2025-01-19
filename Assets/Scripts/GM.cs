@@ -47,6 +47,10 @@ public class GM : MonoBehaviour
             Destroy(GameObject.FindGameObjectsWithTag("GameController")[1]);
             Debug.Log("Destroyed");
         }
+        foreach (GameObject _cherry in GameObject.FindGameObjectsWithTag("Cherry"))
+        {
+            _cherry.GetComponent<Cherry>().gameManager = this;
+        }
         //locates player gameobject and establishes communication between GM/player scripts
 
         DontDestroyOnLoad(this);
