@@ -16,6 +16,8 @@ TagManager:
   - Bandana
   - Boots
   - LoadZone
+  - Removable
+  - DeathZone
   layers:
   - Default
   - TransparentFX

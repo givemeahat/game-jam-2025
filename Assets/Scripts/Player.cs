@@ -47,6 +47,9 @@ public class Player : MonoBehaviour
 
     public string[] questDialogue;
 
+    //---reload info---
+    public Vector3 lastSavedPosition;
+
     //---animation---
     public Animator anim;
 
@@ -80,6 +83,7 @@ public class Player : MonoBehaviour
     //called multiple times a frame for smoother movement
     private void FixedUpdate()
     {
+        if (lastSavedPosition == new Vector3(0, 0, 0)) lastSavedPosition = this.gameObject.transform.position;
         //ground check
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, groundObjects);
         //jumping
@@ -146,6 +150,7 @@ public class Player : MonoBehaviour
         moveDirection = Input.GetAxis("Horizontal");
         if (Input.GetKeyDown(KeyCode.Space) && jumpCount > 0)
         {
+            lastSavedPosition = this.gameObject.transform.position;
             isJumping = true;
             anim.SetTrigger("Jump");
         }
@@ -235,6 +240,10 @@ public class Player : MonoBehaviour
             canCrush = true;
             currentInteractive = collision.gameObject.GetComponent<InteractiveObject>();
             pCanvasController.ShowBreakText();
+        }
+        else if (_coll.tag == "DeathZone")
+        {
+            gm.ReloadScene(lastSavedPosition, GetComponentInChildren<SpriteRenderer>().flipX);
         }
     }
     

@@ -2250,7 +2250,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickedUpCherries: 
-  currentQuest: 0
+  currentQuest: 1
   currentFollower: 0
   startPosition: {x: -5.74, y: 0.2, z: -0.03062148}
   playerPrefab: {fileID: 2671858344059225241, guid: 156bb24acd7ae2d4086693afe8003f44, type: 3}
@@ -2266,6 +2266,8 @@ MonoBehaviour:
   hasTalkedToDragon: 0
   finishedDragonQuest: 0
   hasObtainedDragon: 0
+  newWayDownS4: 0
+  hasFinishedTut: 0
   companions: []
   companionPrefabs:
   - {fileID: 8611096718080919442, guid: 67ede074a882ed947bdeee327be0f142, type: 3}

@@ -35,6 +35,14 @@ public class GM : MonoBehaviour
     public bool finishedDragonQuest;
     public bool hasObtainedDragon;
 
+    //---triggers that remove companions from scene once they are obtained---
+    public bool shouldHaveDog = true;
+
+    public bool isInCutscene = false;
+
+    //---extra text triggers---
+    public bool newWayDownS4 = false;
+
     public bool hasFinishedTut;
 
     public List<GameObject> companions;
@@ -75,11 +83,22 @@ public class GM : MonoBehaviour
 
     public void Update()
     {
-
+        if (newWayDownS4 && SceneManager.GetActiveScene().buildIndex == 4)
+        {
+            ClearObtainedCompanions();
+            NewWayDown();
+        }
         if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Escape))
         {
             UIController.ToggleMenu();
         }
+    }
+
+    private void NewWayDown()
+    {
+        UIController.RunNewWayDownLine();
+        Destroy(GameObject.FindGameObjectWithTag("Removable"));
+        newWayDownS4 = false;
     }
 
     public void AddDog()
@@ -93,6 +112,16 @@ public class GM : MonoBehaviour
     {
         cherryCount++;
         UIController.UpdateCherryText(cherryCount);
+    }
+
+    public void ClearObtainedCompanions()
+    {
+        if (GameObject.FindGameObjectWithTag("Dog") && hasObtainedDog && !isInCutscene)
+            Destroy(GameObject.FindGameObjectWithTag("Dog"));
+        if (GameObject.FindGameObjectWithTag("Bear") && hasObtainedBear && !isInCutscene)
+            Destroy(GameObject.FindGameObjectWithTag("Bear"));
+        if (GameObject.FindGameObjectWithTag("Dragon") && hasObtainedDragon && !isInCutscene)
+            Destroy(GameObject.FindGameObjectWithTag("Dragon"));
     }
 
     public void FadeToBlack()
@@ -111,8 +140,13 @@ public class GM : MonoBehaviour
     {
         StartCoroutine(LoadInScene(_index));
     }
+    public void ReloadScene(Vector3 _resetPos, bool _flipX)
+    {
+        StartCoroutine(ReloadThisScene(_resetPos, _flipX));
+    }
     IEnumerator DogCutscene()
     {
+        isInCutscene = true;
         TextMeshProUGUI cherryText = UIController.cherryLoadScreenText;
         GameObject _loadingScreen = UIController.loadingScreen;
         _loadingScreen.SetActive(true);
@@ -150,14 +184,13 @@ public class GM : MonoBehaviour
         SceneManager.LoadScene(_index);
         Destroy(GameObject.FindGameObjectWithTag("Player"));
         yield return new WaitForSeconds(.2f);
+        isInCutscene = false;
         GameObject _player = Instantiate(playerPrefab) as GameObject;
         Camera.main.GetComponent<SmoothCameraFollow>().target = _player.transform;
         _player.GetComponent<Player>().gm = this;
         _player.transform.position = _position;
         _player.GetComponentInChildren<SpriteRenderer>().flipX = _flipX;
-        Camera.main.transform.position = _position;
-        Camera.main.farClipPlane = 5;
-        Camera.main.nearClipPlane = -10;
+        Camera.main.transform.position = new Vector3 (_position.x, _position.y, -10f);
         _loadingScreen.GetComponent<Animator>().Play("LoadingScreen_FadeOut");
         isLoading = false;
     }
@@ -168,8 +201,27 @@ public class GM : MonoBehaviour
         _loadingScreen.SetActive(true);
         yield return new WaitForSeconds(.5f);
         SceneManager.LoadScene(_index);
-        Camera.main.transform.position = GameObject.FindGameObjectWithTag("Player").transform.position;
+        Camera.main.transform.position = new Vector3(GameObject.FindGameObjectWithTag("Player").transform.position.x, GameObject.FindGameObjectWithTag("Player").transform.position.y, -10);
         yield return new WaitForSeconds(.1f);
+        _loadingScreen.GetComponent<Animator>().Play("LoadingScreen_FadeOut");
+        isLoading = false;
+    }
+    IEnumerator ReloadThisScene(Vector3 _resetPos, bool _flipX)
+    {
+        isLoading = true;
+        GameObject _loadingScreen = UIController.loadingScreen;
+        _loadingScreen.SetActive(true);
+        yield return new WaitForSeconds(.5f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Destroy(GameObject.FindGameObjectWithTag("Player"));
+        yield return new WaitForSeconds(.2f);
+        isInCutscene = false;
+        GameObject _player = Instantiate(playerPrefab) as GameObject;
+        Camera.main.GetComponent<SmoothCameraFollow>().target = _player.transform;
+        _player.GetComponent<Player>().gm = this;
+        _player.transform.position = _resetPos;
+        _player.GetComponentInChildren<SpriteRenderer>().flipX = _flipX;
+        Camera.main.transform.position = new Vector3(_resetPos.x, _resetPos.y, -10f);
         _loadingScreen.GetComponent<Animator>().Play("LoadingScreen_FadeOut");
         isLoading = false;
     }

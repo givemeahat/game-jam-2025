@@ -27,11 +27,11 @@ public class OverrideDialogueSystem : MonoBehaviour
         lineCount++;
         if (isDog)
         {
-            nameText.text = "Doggy";
+            nameText.text = "Bongo";
         }
         if (isBear)
         {
-            nameText.text = "Bear";
+            nameText.text = "Daisy";
         }
         if (isDragon)
         {
@@ -56,7 +56,10 @@ public class OverrideDialogueSystem : MonoBehaviour
                     }
                     else if (SceneManager.GetActiveScene().buildIndex == 6)
                     {
-                        GameObject.FindGameObjectWithTag("GameController").GetComponent<GM>().LoadScene(4);
+                        GameObject _gm = GameObject.FindGameObjectWithTag("GameController");
+                        _gm.GetComponent<GM>().newWayDownS4 = true;
+                        _gm.GetComponent<GM>().currentQuest = GM.Questline.NONE;
+                        _gm.GetComponent<GM>().LoadSceneAndPosition(4, new Vector3(-7.8f, 4.48f, 0f), false);
                     }
                     return;
                 }

@@ -22,13 +22,13 @@ public class Bear : MonoBehaviour
     {
         if (!gm.hasTalkedToBear)
         {
-            gm.UIController.RunConversation(meetDialogue, "Bear");
+            gm.UIController.RunConversation(meetDialogue, "Daisy");
             gm.currentQuest = GM.Questline.BEAR;
             gm.hasTalkedToDog = true;
         }
         if (gm.finishedBearQuest)
         {
-            gm.UIController.RunConversation(questFinishedDialogue, "Bear");
+            gm.UIController.RunConversation(questFinishedDialogue, "Daisy");
         }
     }
 

@@ -26,7 +26,7 @@ public class GMUIController : MonoBehaviour
     public TextMeshProUGUI dialogueLines;
     public int dialogueCount;
 
-    bool progressToBongoCutscene;
+    public bool progressToBongoCutscene;
 
     private void Awake()
     {
@@ -59,7 +59,7 @@ public class GMUIController : MonoBehaviour
             dialogueBoxName.text = " ";
             Destroy(_player.GetComponent<Player>().currentInteractive.transform.parent.gameObject);
         }
-        if (gm.hasTalkedToDog && gm.hasObtainedDog && gm.finishedDogQuest && dialogueCount == 2)
+        if (gm.hasTalkedToDog && gm.hasObtainedDog && gm.finishedDogQuest && gm.currentQuest == GM.Questline.DOG && dialogueCount == 2)
         {
             Debug.Log("Hello???");
             gm.DogFadeCutscene();
@@ -103,6 +103,21 @@ public class GMUIController : MonoBehaviour
         dialogueLines.GetComponent<TextMeshProEffect>().Play();
         dialogueLines.text = currentConversation[dialogueCount];
         dialogueCount++;
+    }
+    public void RunNewWayDownLine()
+    {
+        dialogueCount = 0;
+        isConversing = true;
+        currentConversation.Clear();
+        currentConversation.Add("<i>Wormy has noticed a new way down!</i>");
+        dialogueLines.text = currentConversation[0];
+        dialogueBoxName.text = " ";
+        dialogueBox.SetActive(true);
+        GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().enabled = false;
+        dialogueLines.GetComponent<TextMeshProEffect>().Play();
+        dialogueCount++;
+        progressToBongoCutscene = false;
+        //dialogueLines.text = currentConversation[dialogueCount];
     }
     public void RunKeyLine()
     {
