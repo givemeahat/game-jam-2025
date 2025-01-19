@@ -29,4 +29,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Room5_Beneath Bongo's House.unity
     guid: 39a989c56557a48be80ef9d357c34e9f
+  - enabled: 1
+    path: Assets/Scenes/Room6.unity
+    guid: 7b9d69290945c4028a120d95de4c9758
+  - enabled: 1
+    path: Assets/Scenes/Room7.unity
+    guid: fd29c469167d24d578902b098daffc82
+  - enabled: 1
+    path: Assets/Scenes/Room8.unity
+    guid: 3eb5bf2e37caf41aaafb6fb44e0e7d3e
   m_configObjects: {}
