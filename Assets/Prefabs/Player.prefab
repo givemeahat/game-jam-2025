@@ -303,7 +303,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gm: {fileID: 0}
-  speed: 10
+  speed: 7
   moveDirection: 0
   jumpForce: 3750
   jumpCount: 0

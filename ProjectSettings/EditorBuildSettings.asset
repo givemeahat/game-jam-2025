@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Cutscenes/Doggy_Cutscene_P2.unity
     guid: caaf06caec9cf014eb61d720d6f8dde5
+  - enabled: 1
+    path: Assets/Scenes/Room5_Beneath Bongo's House.unity
+    guid: 39a989c56557a48be80ef9d357c34e9f
   m_configObjects: {}
