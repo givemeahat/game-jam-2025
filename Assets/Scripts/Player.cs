@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
 {
     //---gm---
     public GM gm;
+    public GameObject gmPrefab;
 
     //---movement---
     private Rigidbody2D rb;
@@ -51,9 +52,9 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
-        if (gm == null)
+        if (GameObject.FindGameObjectsWithTag("Player").Length > 1)
         {
-            gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GM>();
+            Destroy(GameObject.FindGameObjectsWithTag("Player")[1]);
         }
         rb = this.GetComponent<Rigidbody2D>();
         pCanvasController = this.GetComponentInChildren<PlayerCanvasController>();
@@ -192,7 +193,7 @@ public class Player : MonoBehaviour
         else if (_coll.tag == "Cherry")
         {
             gm.AddCherry();
-            Destroy(collision.gameObject);
+            _coll.GetComponent<Cherry>().OnPickup();
             pCanvasController.CherryGet();
             anim.SetTrigger("Yippee");
         }
