@@ -36,6 +36,7 @@ public class GM : MonoBehaviour
     {
         DontDestroyOnLoad(this);
         UIController = this.GetComponent<GMUIController>();
+        Camera.main.nearClipPlane = -2;
     }
     // Start is called before the first frame update
     void Start()
@@ -124,6 +125,7 @@ public class GM : MonoBehaviour
         yield return new WaitForSeconds(.1f);
         GameObject.FindGameObjectWithTag("Player").transform.position = _position;
         GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<SpriteRenderer>().flipX = _flipX;
+        Camera.main.transform.position = _position;
         _loadingScreen.GetComponent<Animator>().Play("LoadingScreen_FadeOut");
     }
     IEnumerator LoadInScene(int _index)
@@ -132,6 +134,7 @@ public class GM : MonoBehaviour
         _loadingScreen.SetActive(true);
         yield return new WaitForSeconds(.5f);
         SceneManager.LoadScene(_index);
+        Camera.main.transform.position = GameObject.FindGameObjectWithTag("Player").transform.position;
         yield return new WaitForSeconds(.1f);
         _loadingScreen.GetComponent<Animator>().Play("LoadingScreen_FadeOut");
     }
