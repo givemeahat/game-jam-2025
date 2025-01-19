@@ -8,9 +8,12 @@ public class SmoothCameraFollow : MonoBehaviour
     private Vector3 velocity = Vector3.zero;
     public Transform target;
 
-    private void Awake()
+    private void Start()
     {
-        target = GameObject.FindGameObjectWithTag("Player").transform;
+        if (GameObject.FindGameObjectWithTag("Player"))
+        {
+            target = GameObject.FindGameObjectWithTag("Player").transform;
+        }
     }
 
     // Update is called once per frame
