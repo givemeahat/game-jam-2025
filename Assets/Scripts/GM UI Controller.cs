@@ -13,6 +13,7 @@ public class GMUIController : MonoBehaviour
     public TextMeshProUGUI cherryText;
 
     public GameObject menu;
+    public GameObject tutorialImage;
 
     public GameObject loadingScreen;
 

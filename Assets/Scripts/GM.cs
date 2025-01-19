@@ -35,6 +35,8 @@ public class GM : MonoBehaviour
     public bool finishedDragonQuest;
     public bool hasObtainedDragon;
 
+    public bool hasFinishedTut;
+
     public List<GameObject> companions;
 
     public GameObject[] companionPrefabs;
@@ -73,6 +75,7 @@ public class GM : MonoBehaviour
 
     public void Update()
     {
+
         if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Escape))
         {
             UIController.ToggleMenu();
