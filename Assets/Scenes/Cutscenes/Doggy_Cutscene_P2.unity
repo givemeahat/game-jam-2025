@@ -2024,83 +2024,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 67ede074a882ed947bdeee327be0f142, type: 3}
---- !u!1001 &1065541241
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 47972664979924108, guid: 67ede074a882ed947bdeee327be0f142, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -1.262
-      objectReference: {fileID: 0}
-    - target: {fileID: 1361214575256917435, guid: 67ede074a882ed947bdeee327be0f142, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 2.0736675
-      objectReference: {fileID: 0}
-    - target: {fileID: 1361214575256917435, guid: 67ede074a882ed947bdeee327be0f142, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.9712851
-      objectReference: {fileID: 0}
-    - target: {fileID: 1361214575256917435, guid: 67ede074a882ed947bdeee327be0f142, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1361214575256917435, guid: 67ede074a882ed947bdeee327be0f142, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1361214575256917435, guid: 67ede074a882ed947bdeee327be0f142, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1361214575256917435, guid: 67ede074a882ed947bdeee327be0f142, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1361214575256917435, guid: 67ede074a882ed947bdeee327be0f142, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1361214575256917435, guid: 67ede074a882ed947bdeee327be0f142, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1361214575256917435, guid: 67ede074a882ed947bdeee327be0f142, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1361214575256917435, guid: 67ede074a882ed947bdeee327be0f142, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8611096718080919442, guid: 67ede074a882ed947bdeee327be0f142, type: 3}
-      propertyPath: m_Name
-      value: Doggy
-      objectReference: {fileID: 0}
-    - target: {fileID: 8715389986344819159, guid: 67ede074a882ed947bdeee327be0f142, type: 3}
-      propertyPath: finalDogDialogue.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8715389986344819159, guid: 67ede074a882ed947bdeee327be0f142, type: 3}
-      propertyPath: finalDogDialogue.Array.data[3]
-      value: ... plus, it's so fun hanging out with you, bark bark!
-      objectReference: {fileID: 0}
-    - target: {fileID: 8715389986344819159, guid: 67ede074a882ed947bdeee327be0f142, type: 3}
-      propertyPath: finalDogDialogue.Array.data[4]
-      value: Let's go find some more cherries!
-      objectReference: {fileID: 0}
-    - target: {fileID: 9014071811213298334, guid: 67ede074a882ed947bdeee327be0f142, type: 3}
-      propertyPath: m_FlipX
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 67ede074a882ed947bdeee327be0f142, type: 3}
 --- !u!1001 &1095979943
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12587,11 +12510,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!1 &1212129975 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8611096718080919442, guid: 67ede074a882ed947bdeee327be0f142, type: 3}
-  m_PrefabInstance: {fileID: 1065541241}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1279641893
 GameObject:
   m_ObjectHideFlags: 0
@@ -13401,7 +13319,7 @@ PrefabInstance:
     - target: {fileID: 5985665839360094955, guid: 4d82512fe1674954fb55d6b68eafbf94, type: 3}
       propertyPath: character
       value: 
-      objectReference: {fileID: 1212129975}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13421,7 +13339,6 @@ SceneRoots:
   - {fileID: 5148805176861653617}
   - {fileID: 506181304}
   - {fileID: 1945933572}
-  - {fileID: 1065541241}
   - {fileID: 236907028}
   - {fileID: 1039776179}
   - {fileID: 1666528244}

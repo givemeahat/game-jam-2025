@@ -8,6 +8,8 @@ public class GM : MonoBehaviour
 {
     public static GM singleton;
     public List<int> pickedUpCherries = new List<int>();
+    public List<int> brokenWalls = new List<int>();
+    public List<int> brokenFloors = new List<int>();
     public GM() => singleton = this;
 
     public enum Questline { NONE, DOG, BEAR, DRAGON };
@@ -42,6 +44,7 @@ public class GM : MonoBehaviour
 
     //---extra text triggers---
     public bool newWayDownS4 = false;
+    public bool newHallways = false;
 
     public bool hasFinishedTut;
 
@@ -100,7 +103,12 @@ public class GM : MonoBehaviour
         Destroy(GameObject.FindGameObjectWithTag("Removable"));
         newWayDownS4 = false;
     }
-
+    private void NewHallways()
+    {
+        UIController.RunNewHallwayLine();
+        //Destroy(GameObject.FindGameObjectWithTag("Removable"));
+        newHallways = false;
+    }
     public void AddDog()
     {
         hasObtainedDog = true;
@@ -201,7 +209,8 @@ public class GM : MonoBehaviour
         _loadingScreen.SetActive(true);
         yield return new WaitForSeconds(.5f);
         SceneManager.LoadScene(_index);
-        Camera.main.transform.position = new Vector3(GameObject.FindGameObjectWithTag("Player").transform.position.x, GameObject.FindGameObjectWithTag("Player").transform.position.y, -10);
+        yield return new WaitForSeconds(.1f);
+        Camera.main.transform.position = new Vector3(GameObject.FindGameObjectWithTag("Player").transform.position.x, GameObject.FindGameObjectWithTag("Player").transform.position.y, -10f);
         yield return new WaitForSeconds(.1f);
         _loadingScreen.GetComponent<Animator>().Play("LoadingScreen_FadeOut");
         isLoading = false;

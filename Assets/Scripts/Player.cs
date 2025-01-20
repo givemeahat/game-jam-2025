@@ -121,9 +121,12 @@ public class Player : MonoBehaviour
                 currentInteractive.FeedThroughMethod();
                 return;
             }
-            if (canGrabBandana)
+            if (canGrabBandana && !hasGrabbedBandana)
             {
                 if (pCanvasController.grabText.IsActive()) pCanvasController.HideGrabText();
+                gm.UIController.RunBandanaLine();
+                currentInteractive.FeedThroughMethod();
+                return;
             }
             if (canGrabBoots)
             {
@@ -229,7 +232,7 @@ public class Player : MonoBehaviour
             currentInteractive = _coll.GetComponent<InteractiveObject>();
             pCanvasController.ShowGrabText();
         }
-        else if (_coll.tag == "DigSpot" && gm.hasObtainedDog)
+        else if (_coll.tag == "DigSpot" && gm.hasObtainedDog || _coll.tag == "LeafPile")
         {
             canDig = true;
             currentInteractive = collision.gameObject.GetComponent<InteractiveObject>();

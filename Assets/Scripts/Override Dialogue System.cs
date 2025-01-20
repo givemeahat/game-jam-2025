@@ -63,12 +63,32 @@ public class OverrideDialogueSystem : MonoBehaviour
                     }
                     return;
                 }
+                if (isBear)
+                {
+                    if (SceneManager.GetActiveScene().buildIndex == 13)
+                    {
+                        GameObject.FindGameObjectWithTag("GameController").GetComponent<GM>().LoadScene(14);
+                    }
+                    else if (SceneManager.GetActiveScene().buildIndex == 14)
+                    {
+                        GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<Animator>().Play("Worm_Yippee");
+                        GameObject _gm = GameObject.FindGameObjectWithTag("GameController");
+                        _gm.GetComponent<GM>().newHallways = true;
+                        _gm.GetComponent<GM>().hasObtainedBear = true;
+                        _gm.GetComponent<GM>().currentQuest = GM.Questline.NONE;
+                        _gm.GetComponent<GM>().LoadSceneAndPosition(10, new Vector3(-19.8700008f, -10.2200003f, 0f), false);
+                    }
+                }
                 if (isWorm)
                 {
                     GM _gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GM>();
                     _gm.LoadSceneAndPosition(1, new Vector3(-5.74f, 0.63f, 0), false);
                     _gm.UIController.cherryText.gameObject.SetActive(true);
                 }
+            }
+            if (isBear && lineCount == 4 && !GameObject.FindGameObjectWithTag("GameController").GetComponent<GM>().hasObtainedBear && GameObject.FindGameObjectWithTag("GameController").GetComponent<GM>().finishedBearQuest)
+            {
+                nameText.text = " ";
             }
             if (isWorm && lineCount == 3)
             {

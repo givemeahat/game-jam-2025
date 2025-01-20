@@ -8,6 +8,10 @@ public class InteractiveObject : MonoBehaviour
     
     public void FeedThroughMethod()
     {
+        if (parent.tag == "LeafPile")
+        {
+            parent.GetComponent<LeafPile>().DigIn();
+        }
         if (parent.tag == "DigSpot")
         {
             parent.GetComponent<DigSpot>().Dig();
@@ -32,6 +36,11 @@ public class InteractiveObject : MonoBehaviour
         {
             Destroy(parent.gameObject);
             Debug.Log("Destroyed Key");
+        }
+        if (parent.tag == "Bandana")
+        {
+            Destroy(parent.gameObject);
+            Debug.Log("Destroyed Bandana");
         }
         /*if (parent.tag == "Cat")
         {

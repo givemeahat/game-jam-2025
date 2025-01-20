@@ -18,6 +18,7 @@ TagManager:
   - LoadZone
   - Removable
   - DeathZone
+  - LeafPile
   layers:
   - Default
   - TransparentFX

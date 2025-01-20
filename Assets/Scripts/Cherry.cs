@@ -20,7 +20,7 @@ public class Cherry : MonoBehaviour
 
     public void OnPickup()
     {
-        GM.singleton.pickedUpCherries.Add(ID);
+        gameManager.pickedUpCherries.Add(ID);
         Debug.Log("added to GM Cherry list");
         Destroy(this.gameObject);
     }

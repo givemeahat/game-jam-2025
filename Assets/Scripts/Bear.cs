@@ -16,6 +16,10 @@ public class Bear : MonoBehaviour
     private void Awake()
     {
         gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GM>();
+        if (gm.hasObtainedBear)
+        {
+            this.gameObject.SetActive(false);
+        }
     }
 
     public void ConversationManager()

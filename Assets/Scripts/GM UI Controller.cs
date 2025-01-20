@@ -27,6 +27,8 @@ public class GMUIController : MonoBehaviour
     public int dialogueCount;
 
     public bool progressToBongoCutscene;
+    public bool progressToDaisyCutscene;
+    public bool progressToBootsCutscene;
 
     private void Awake()
     {
@@ -74,6 +76,14 @@ public class GMUIController : MonoBehaviour
             if (progressToBongoCutscene)
             {
                 gm.LoadScene(5);
+            }
+            if (progressToDaisyCutscene)
+            {
+                gm.LoadScene(13);
+            }
+            if (progressToBootsCutscene)
+            {
+                //progress to boots cutscene!
             }
         }
         else if (dialogueCount < currentConversation.Count)
@@ -138,11 +148,28 @@ public class GMUIController : MonoBehaviour
     {
         dialogueCount = 0;
         isConversing = true;
-        currentConversation.Add("<i>Wormy has unearthed Daisy's bandana!</i>");
+        currentConversation.Clear();
+        dialogueBoxName.text = " ";
+        dialogueLines.text = "<i> Wormy has unearthed Daisy's bandana!</i>";
+        dialogueBox.SetActive(true);
+        GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().enabled = false;
+        dialogueLines.GetComponent<TextMeshProEffect>().Play();
+        progressToDaisyCutscene = true;
+        //dialogueLines.text = currentConversation[dialogueCount];
+    }
+    public void RunNewHallwayLine()
+    {
+        dialogueCount = 0;
+        isConversing = true;
+        currentConversation.Clear();
+        currentConversation.Add("<i>Wormy has noticed a new way down!</i>");
+        dialogueLines.text = currentConversation[0];
         dialogueBoxName.text = " ";
         dialogueBox.SetActive(true);
         GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().enabled = false;
         dialogueLines.GetComponent<TextMeshProEffect>().Play();
+        dialogueCount++;
+        progressToBongoCutscene = false;
         //dialogueLines.text = currentConversation[dialogueCount];
     }
     public void RunBootsLine()
